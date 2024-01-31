@@ -44,8 +44,8 @@ def translate_file():
     st.divider()
     st.header("Translated PDF")
     st.text(translated)
-    st.download_button(label="Download file", data=translated, file_name='File_translation.txt')
-    st.success("Thank you for downloading the translation")
+    if st.download_button(label="Download file", data=translated, file_name='File_translation.txt'):
+        st.success("Thank you for downloading the translation")
 
 
 st.header("UPLOAD FILE FOR TRANSLATION")
