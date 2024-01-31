@@ -41,6 +41,7 @@ Here's what you can do:
 - **Language Detection:** Automatically identifies the language of input text
 - **Detect languages:** Automatically identify the language of any text you provide.
 - **Enjoy a seamless experience:** Our user-friendly interface makes translation effortless.
+- **Translation Download:** After translating your file, you can download your translation as a text file.
 
 ## Limitations
 - **File Size:** Although this web app supports PDf, DOC and TXT file types, the sizes of the files will affect the 

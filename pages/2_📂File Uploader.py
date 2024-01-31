@@ -38,6 +38,16 @@ def read_txt(txt_upload):
     return translated_txt
 
 
+# Function to translate and download translations as a text file
+def translate_file():
+    translated = Gt(source=lang_file, target=lang_user).translate(content_pdf)
+    st.divider()
+    st.header("Translated PDF")
+    st.text(translated)
+    st.download_button(label="Download file", data=translated, file_name='File_translation.txt')
+    st.success("Thank you for downloading the translation")
+
+
 st.header("UPLOAD FILE FOR TRANSLATION")
 
 # A list of all the languages supported
@@ -78,10 +88,8 @@ if file_opt == ".pdf":
         if not lang_user:
             st.warning("Select a desired translation for your file")
         else:
-            translated = Gt(source=lang_file, target=lang_user).translate(content_pdf)
-            st.divider()
-            st.header("Translated PDF")
-            st.text(translated)
+            translate_file()
+
     except AttributeError:
         st.warning("No file uploaded")
     except Exception:
@@ -99,11 +107,8 @@ elif file_opt in [".doc", ".docx"]:
         if not lang_user:
             st.warning("Select a desired translation for your file")
         else:
-            translated = Gt(source=lang_file, target=lang_user).translate(contentdoc)
-            st.divider()
-            st.write("Translated Document")
-            st.text(translated)
-    except AttributeError:   # An error keeps popping, so I just caught it with the general Exception thingy
+            translate_file()    # Translate file function defined to translate and download files.
+    except AttributeError:
         st.warning("An error occurred please attempt selecting the preferred translation before the file type.")
 
 elif file_opt == ".txt":
@@ -116,9 +121,7 @@ elif file_opt == ".txt":
         if not lang_user:
             st.warning("Select a desired translation for your file")
         else:
-            translated = Gt(source=lang_file, target=lang_user).translate(contenttxt)
-            st.write("Translated Document")
-            st.text(translated)
+            translate_file()
 
     except AttributeError:
         st.warning("No file uploaded")
